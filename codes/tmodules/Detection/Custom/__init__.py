@@ -2,16 +2,16 @@ import os
 import re
 import numpy as np
 import json
-from imageai.Detection.Custom.voc import parse_voc_annotation
-from imageai.Detection.Custom.yolo import create_yolov3_model, dummy_loss
-from imageai.Detection.YOLOv3.models import yolo_main
-from imageai.Detection.Custom.generator import BatchGenerator
-from imageai.Detection.Custom.utils.utils import normalize, evaluate, makedirs
+from tmodules.Detection.Custom.voc import parse_voc_annotation
+from tmodules.Detection.Custom.yolo import create_yolov3_model, dummy_loss
+from tmodules.Detection.YOLOv3.models import yolo_main
+from tmodules.Detection.Custom.generator import BatchGenerator
+from tmodules.Detection.Custom.utils.utils import normalize, evaluate, makedirs
 from keras.callbacks import ReduceLROnPlateau
 from keras.optimizers import Adam
-from imageai.Detection.Custom.callbacks import CustomModelCheckpoint, CustomTensorBoard
-from imageai.Detection.Custom.utils.multi_gpu_model import multi_gpu_model
-from imageai.Detection.Custom.gen_anchors import generateAnchors
+from tmodules.Detection.Custom.callbacks import CustomModelCheckpoint, CustomTensorBoard
+from tmodules.Detection.Custom.utils.multi_gpu_model import multi_gpu_model
+from tmodules.Detection.Custom.gen_anchors import generateAnchors
 import tensorflow as tf
 from keras.models import load_model, Input
 from keras.callbacks import TensorBoard
