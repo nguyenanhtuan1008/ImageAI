@@ -11,7 +11,7 @@ from tensorflow.python.keras.models import Sequential
 
 class ImagePrediction:
     """
-            This is the image prediction class in the ImageAI library. It provides support for 4 different models which are:
+            This is the image prediction class in the tmodules library. It provides support for 4 different models which are:
              ResNet, SqueezeNet, DenseNet and Inception V3. After instantiating this class, you can set it's properties and
              make image predictions using it's pre-defined functions.
 
@@ -143,8 +143,8 @@ class ImagePrediction:
                 import numpy as np
                 from tensorflow.python.keras.preprocessing import image
 
-                from imageai.Prediction.InceptionV3.inceptionv3 import InceptionV3
-                from imageai.Prediction.InceptionV3.inceptionv3 import preprocess_input, decode_predictions
+                from tmodules.Prediction.InceptionV3.inceptionv3 import InceptionV3
+                from tmodules.Prediction.InceptionV3.inceptionv3 import preprocess_input, decode_predictions
 
                 try:
                     model = InceptionV3(include_top=True, weights="imagenet", model_path=self.modelPath, model_input=image_input)
@@ -341,7 +341,7 @@ class ImagePrediction:
 
                 model = self.__model_collection[0]
 
-                from imageai.Prediction.InceptionV3.inceptionv3 import InceptionV3, preprocess_input, decode_predictions
+                from tmodules.Prediction.InceptionV3.inceptionv3 import InceptionV3, preprocess_input, decode_predictions
 
                 if (input_type == "file"):
                     try:
@@ -590,7 +590,7 @@ class ImagePrediction:
 
                     model = self.__model_collection[0]
 
-                    from imageai.Prediction.InceptionV3.inceptionv3 import InceptionV3, preprocess_input, \
+                    from tmodules.Prediction.InceptionV3.inceptionv3 import InceptionV3, preprocess_input, \
                         decode_predictions
 
                     if (input_type == "file"):

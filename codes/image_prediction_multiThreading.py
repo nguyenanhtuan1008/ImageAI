@@ -9,8 +9,8 @@ class PredictionThread(threading.Thread):
         threading.Thread.__init__(self)
     def run(self):
         multiple_prediction = ImagePrediction()
-        multiple_prediction.setModelTypeAsResNet()
-        multiple_prediction.setModelPath(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\resnet50_weights_tf_dim_ordering_tf_kernels.h5"))
+        multiple_prediction.setModelTypeAsDenseNet()
+        multiple_prediction.setModelPath(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\DenseNet-BC-121-32.h5"))
         multiple_prediction.loadModel(prediction_speed="fastest") # fastest faster fast normal 
 
         all_images_array = []
@@ -38,8 +38,8 @@ class PredictionThread2(threading.Thread):
         print("###########################################################")
 
         prediction = ImagePrediction()
-        prediction.setModelTypeAsResNet()
-        prediction.setModelPath(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\resnet50_weights_tf_dim_ordering_tf_kernels.h5")) # Download the model via this link https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0
+        prediction.setModelTypeAsInceptionV3()
+        prediction.setModelPath(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\inception_v3_weights_tf_dim_ordering_tf_kernels.h5")) # Download the model via this link https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0
         prediction.loadModel()
 
         predictions, probabilities = prediction.predictImage(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\data-images\1.jpg"), result_count=10 , input_type="stream") # input_type="array"
