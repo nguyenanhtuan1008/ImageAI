@@ -108,6 +108,23 @@ def video_analys_full():
         minimum_percentage_probability=30
     )
 
+def camera_detection_timeout():
+    execution_path = os.getcwd()
+    camera = cv2.VideoCapture(r"E:\acuity\tuan_experiment\yolo\ImageAI\data-videos\traffic.mp4")
+
+    detector = VideoObjectDetection()
+    detector.setModelTypeAsTinyYOLOv3()
+    detector.setModelPath(os.path.join(execution_path , r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\detection\yolo-tiny.h5"))
+    detector.loadModel()
+
+
+    video_path = detector.detectObjectsFromVideo(camera_input=camera,
+                                                output_file_path=os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\codes\output\camera_detected_video_timeout.mp4"),
+                                                frames_per_second=20,
+                                                log_progress=True,
+                                                minimum_percentage_probability=40,
+                                                detection_timeout=120)
+
 if __name__ == '__main__':
     # Video obj detection
     # video_obj_detection()
@@ -119,7 +136,10 @@ if __name__ == '__main__':
     # camera_live_video_detection()
 
     # Analys
-    video_analys()
+    # video_analys()
 
     # Analys
     # video_analys_full()
+
+    #Time out
+    camera_detection_timeout()
