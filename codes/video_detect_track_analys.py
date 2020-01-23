@@ -75,7 +75,7 @@ def video_analys():
     video_detector = VideoObjectDetection()
     video_detector.setModelTypeAsYOLOv3()
     video_detector.setModelPath(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\detection\yolo.h5"))
-    video_detector.loadModel()
+    video_detector.loadModel(detection_speed="fast")
 
     video_detector.detectObjectsFromVideo(
         input_file_path=os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\data-videos\traffic.mp4"),
@@ -84,6 +84,27 @@ def video_analys():
         per_second_function=forSeconds,
         per_frame_function=forFrame,
         per_minute_function=forMinute,
+        minimum_percentage_probability=30
+    )
+
+def forFull(output_arrays, count_arrays, average_output_count):
+    #Perform action on the 3 parameters returned into the function
+    print("Array for the outputs of each frame ", output_arrays)
+    print("Array for output count for unique objects in each frame : ", count_arrays)
+    print("Output average count for unique objects in the last minute: ", average_output_count)
+
+def video_analys_full():
+    execution_path = os.getcwd()
+    video_detector = VideoObjectDetection()
+    video_detector.setModelTypeAsTinyYOLOv3()
+    video_detector.setModelPath(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\detection\yolo-tiny.h5"))
+    video_detector.loadModel()
+
+    video_detector.detectObjectsFromVideo(
+        input_file_path=os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\data-videos\traffic.mp4"),
+        output_file_path=os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\codes\output\analys_full_traffic_detected.mp4"),
+        frames_per_second=10,
+        video_complete_function=forFull,
         minimum_percentage_probability=30
     )
 
@@ -99,3 +120,6 @@ if __name__ == '__main__':
 
     # Analys
     video_analys()
+
+    # Analys
+    # video_analys_full()
