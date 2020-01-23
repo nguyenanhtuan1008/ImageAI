@@ -1,6 +1,5 @@
 # weights
-weights/resnet50_weights_tf_dim_ordering_tf_kernels.h5
-resnet50_weights_tf_dim_ordering_tf_kernels.h5
+weights
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

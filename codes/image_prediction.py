@@ -1,5 +1,6 @@
 from tmodules.Prediction import ImagePrediction
 import os
+import threading
 
 execution_path = os.getcwd()
 
@@ -36,11 +37,15 @@ def predict_folder_images():
         for index in range(len(predictions)):
             print(predictions[index] , " : " , percentage_probabilities[index])
         print("-----------------------")
+
+
 if __name__ == '__main__':
     
     # Prediction single image
-    prediction_single_image()
+    # prediction_single_image()
 
     # Prediction folder images
     # predict_folder_images()
-    
+
+
+    predict_images_multiThreading()
