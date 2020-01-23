@@ -1,9 +1,9 @@
 import cv2
-from imageai.Detection.keras_retinanet.models.resnet import resnet50_retinanet
-from imageai.Detection.keras_retinanet.utils.image import read_image_bgr, read_image_array, read_image_stream, \
+from tmodules.Detection.keras_retinanet.models.resnet import resnet50_retinanet
+from tmodules.Detection.keras_retinanet.utils.image import read_image_bgr, read_image_array, read_image_stream, \
     preprocess_image, resize_image
-from imageai.Detection.keras_retinanet.utils.visualization import draw_box, draw_caption
-from imageai.Detection.keras_retinanet.utils.colors import label_color
+from tmodules.Detection.keras_retinanet.utils.visualization import draw_box, draw_caption
+from tmodules.Detection.keras_retinanet.utils.colors import label_color
 import matplotlib.pyplot as plt
 import matplotlib.image as pltimage
 import numpy as np
@@ -14,8 +14,8 @@ from keras.layers import Input
 from PIL import Image
 import colorsys
 
-from imageai.Detection.YOLOv3.models import yolo_main, tiny_yolo_main
-from imageai.Detection.YOLOv3.utils import letterbox_image, yolo_eval
+from tmodules.Detection.YOLOv3.models import yolo_main, tiny_yolo_main
+from tmodules.Detection.YOLOv3.utils import letterbox_image, yolo_eval
 
 
 def get_session():
@@ -26,7 +26,7 @@ def get_session():
 
 class ObjectDetection:
     """
-                    This is the object detection class for images in the ImageAI library. It provides support for RetinaNet
+                    This is the object detection class for images in the tmodules library. It provides support for RetinaNet
                      , YOLOv3 and TinyYOLOv3 object detection networks . After instantiating this class, you can set it's properties and
                      make object detections using it's pre-defined functions.
 
@@ -921,7 +921,7 @@ class ObjectDetection:
 
 class VideoObjectDetection:
     """
-                    This is the object detection class for videos and camera live stream inputs in the ImageAI library. It provides support for RetinaNet,
+                    This is the object detection class for videos and camera live stream inputs in the tmodules library. It provides support for RetinaNet,
                      YOLOv3 and TinyYOLOv3 object detection networks. After instantiating this class, you can set it's properties and
                      make object detections using it's pre-defined functions.
 
