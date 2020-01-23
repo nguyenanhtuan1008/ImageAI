@@ -46,6 +46,7 @@ class PredictionThread2(threading.Thread):
         for eachPrediction, eachProbability in zip(predictions, probabilities):
             print(eachPrediction , " : " , eachProbability)
 
+# https://github.com/nguyenanhtuan1008/ImageAI/blob/master/imageai/Prediction/README.md
 #Run
 execution_path = os.getcwd()
 

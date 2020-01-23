@@ -103,9 +103,73 @@ def custom_images_prediction():
     for eachPrediction, eachProbability in zip(predictions, probabilities):
         print(str(eachPrediction) + " : " + str(eachProbability))
 
+def custom_images_prediction_full_model():
+    execution_path = os.getcwd()
+
+    predictor = CustomImagePrediction()
+    predictor.setModelPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\models\model_ex-002_acc-0.663194.h5")
+    predictor.setJsonPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\json\model_class.json")
+    predictor.loadFullModel(num_objects=2)
+
+    results, probabilities = predictor.predictImage(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\test\fray\20191202IMG_0360.jpg", result_count=5)
+    print(results)
+    print(probabilities)
+
+def multiple_model():
+    
+    execution_path = os.getcwd()
+
+    predictor = CustomImagePrediction()
+    predictor.setModelPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\models\model_ex-002_acc-0.663194.h5")
+    predictor.setJsonPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\json\model_class.json")
+    predictor.setModelTypeAsResNet()
+    predictor.loadModel(num_objects=2)
+
+    predictor2 = CustomImagePrediction()
+    predictor2.setModelPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\models\model_ex-002_acc-0.663194.h5")
+    predictor2.setJsonPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\json\model_class.json")
+    predictor2.loadFullModel(num_objects=2)
+
+    predictor3 = CustomImagePrediction()
+    predictor3.setModelPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\models\model_ex-002_acc-0.663194.h5")
+    predictor3.setJsonPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\json\model_class.json")
+    predictor3.setModelTypeAsInceptionV3()
+    predictor3.loadModel(num_objects=2)
+
+    results, probabilities = predictor.predictImage(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\test\fray\20191202IMG_0360.jpg", result_count=5)
+    print(results)
+    print(probabilities)
+
+    results2, probabilities2 = predictor2.predictImage(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\test\fray\20191202IMG_0360.jpg",
+                                                        result_count=5)
+    print(results2)
+    print(probabilities2)
+
+    results3, probabilities3 = predictor3.predictImage(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\test\fray\20191202IMG_0360.jpg",
+                                                        result_count=5)
+    print(results3)
+    print(probabilities3)
+    print("-------------------------------")  
+
+def convert_to_tensorflow():
+    execution_path = os.getcwd()
+
+    prediction = CustomImagePrediction()
+    prediction.setModelTypeAsResNet()
+    prediction.setModelPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\models\model_ex-002_acc-0.663194.h5")
+    prediction.setJsonPath(os.path.join(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\json\model_class.json"))
+    prediction.loadModel(num_objects=2)
+
+    prediction.save_model_to_tensorflow(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\models\tf", new_model_name="tf")
+    # predictions, probabilities = prediction.predictImage(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\test\fray\20191202IMG_0360.jpg", 
+    #                                                     result_count=2)
+
+    # for eachPrediction, eachProbability in zip(predictions, probabilities):
+    #     print(str(eachPrediction) + " : " + str(eachProbability))
 
 if __name__ == '__main__':
-
+    
+    # https://github.com/nguyenanhtuan1008/ImageAI/blob/master/imageai/Prediction/CUSTOMTRAINING.md
     # Train custom model
     # train_custom_model()
 
@@ -114,6 +178,16 @@ if __name__ == '__main__':
 
     # Tranfer learning
     # tranfer_learning()
-    
+
+    # https://github.com/nguyenanhtuan1008/ImageAI/blob/master/imageai/Prediction/CUSTOMPREDICTION.md
     # Custom image prediction
-    custom_images_prediction()
+    # custom_images_prediction()
+
+    # Custom image prediction with full model
+    # custom_images_prediction_full_model()
+
+    # Custom Prediction with multiple models
+    # multiple_model()
+
+    # conver to tf
+    convert_to_tensorflow()

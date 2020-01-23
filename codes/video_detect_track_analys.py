@@ -126,6 +126,7 @@ def camera_detection_timeout():
                                                 detection_timeout=120)
 
 if __name__ == '__main__':
+    # https://github.com/nguyenanhtuan1008/ImageAI/blob/master/imageai/Detection/VIDEO.md
     # Video obj detection
     # video_obj_detection()
 

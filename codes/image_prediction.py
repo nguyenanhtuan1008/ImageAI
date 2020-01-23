@@ -40,7 +40,7 @@ def predict_folder_images():
 
 
 if __name__ == '__main__':
-    
+    # https://github.com/nguyenanhtuan1008/ImageAI/blob/master/imageai/Prediction/README.md
     # Prediction single image
     # prediction_single_image()
 

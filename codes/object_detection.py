@@ -59,6 +59,8 @@ def custom_obj_detection():
         print("--------------------------------")
 
 if __name__ == '__main__':
+    # https://github.com/nguyenanhtuan1008/ImageAI/blob/master/imageai/Detection/README.md
+
     # Detect
     # detect_single_images()
 
