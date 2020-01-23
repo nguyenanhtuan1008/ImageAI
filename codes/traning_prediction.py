@@ -1,4 +1,5 @@
 from tmodules.Prediction.Custom import ModelTraining
+from tmodules.Prediction.Custom import CustomImagePrediction
 import os
 
 def train_custom_model():
@@ -79,11 +80,40 @@ def continue_model_training():
     trainer.trainModel(num_objects=2, num_experiments=5, enhance_data=True, batch_size=8, show_network_summary=True, 
                         continue_from_model= r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\models\model_ex-010_acc-0.760417.h5", save_full_model=False)
 
+def tranfer_learning():
+
+    trainer = ModelTraining()
+    trainer.setModelTypeAsResNet()
+    trainer.setDataDirectory(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai")
+    trainer.trainModel(num_objects=2, num_experiments=20, enhance_data=True, batch_size=32, show_network_summary=True,
+                        transfer_from_model=r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\prediction\resnet50_weights_tf_dim_ordering_tf_kernels.h5", 
+                        initial_num_objects=1000)
+def custom_images_prediction():
+    execution_path = os.getcwd()
+
+    prediction = CustomImagePrediction()
+    prediction.setModelTypeAsResNet()
+    prediction.setModelPath(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\models\model_ex-002_acc-0.663194.h5")
+    prediction.setJsonPath(os.path.join(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\json\model_class.json"))
+    prediction.loadModel(num_objects=2)
+
+    predictions, probabilities = prediction.predictImage(r"E:\acuity\acuity_projects\AR\datasets\cvat\_stain_fray\images_croped_imageai\test\fray\20191202IMG_0360.jpg", 
+                                                        result_count=2)
+
+    for eachPrediction, eachProbability in zip(predictions, probabilities):
+        print(str(eachPrediction) + " : " + str(eachProbability))
+
+
 if __name__ == '__main__':
 
     # Train custom model
     # train_custom_model()
 
     # Continue traning model
-    continue_model_training()
+    # continue_model_training()
+
+    # Tranfer learning
+    # tranfer_learning()
     
+    # Custom image prediction
+    custom_images_prediction()
