@@ -9,7 +9,7 @@ def prediction_single_image():
     prediction.setModelPath(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\resnet50_weights_tf_dim_ordering_tf_kernels.h5")) # Download the model via this link https://github.com/OlafenwaMoses/ImageAI/releases/tag/1.0
     prediction.loadModel()
 
-    predictions, probabilities = prediction.predictImage(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\data-images\1.jpg"), result_count=10)
+    predictions, probabilities = prediction.predictImage(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\data-images\1.jpg"), result_count=10 , input_type="stream") # input_type="array"
     for eachPrediction, eachProbability in zip(predictions, probabilities):
         print(eachPrediction , " : " , eachProbability)
 
@@ -17,7 +17,7 @@ def predict_folder_images():
     multiple_prediction = ImagePrediction()
     multiple_prediction.setModelTypeAsResNet()
     multiple_prediction.setModelPath(os.path.join(execution_path, r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\resnet50_weights_tf_dim_ordering_tf_kernels.h5"))
-    multiple_prediction.loadModel()
+    multiple_prediction.loadModel(prediction_speed="fastest") # fastest faster fast normal 
 
     all_images_array = []
 
@@ -39,7 +39,7 @@ def predict_folder_images():
 if __name__ == '__main__':
     
     # Prediction single image
-    # prediction_single_image()
+    prediction_single_image()
 
     # Prediction folder images
     # predict_folder_images()
