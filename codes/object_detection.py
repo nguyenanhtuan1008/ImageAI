@@ -38,7 +38,7 @@ def custom_obj_detection():
     detector = ObjectDetection()
     detector.setModelTypeAsYOLOv3()
     detector.setModelPath( os.path.join(execution_path , r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\yolo.h5"))
-    detector.loadModel()
+    detector.loadModel(detection_speed="fast") #  "normal"(default), "fast", "faster" , "fastest" and "flash"
 
     custom_objects = detector.CustomObjects(car=True, motorcycle=True)
     detections = detector.detectCustomObjectsFromImage(custom_objects=custom_objects, 
