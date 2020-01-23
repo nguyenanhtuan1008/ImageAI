@@ -9,6 +9,10 @@ def detect_single_images():
     detector.setModelPath( os.path.join(execution_path , r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\yolo.h5"))
     detector.loadModel()
     detections = detector.detectObjectsFromImage(input_image=os.path.join(execution_path , r"E:\acuity\tuan_experiment\yolo\ImageAI\data-images\image2.jpg"), output_image_path=os.path.join(execution_path , r"E:\acuity\tuan_experiment\yolo\ImageAI\codes\output\image2new.jpg"), minimum_percentage_probability=30)
+    
+    # detections = detector.detectObjectsFromImage(input_type="array", input_image=image_array , output_image_path=os.path.join(execution_path , "image.jpg")) # For numpy array input type
+    # detections = detector.detectObjectsFromImage(input_type="stream", input_image=image_stream , output_image_path=os.path.join(execution_path , "test2new.jpg")) # For file stream input type
+    # detected_image_array, detections = detector.detectObjectsFromImage(output_type="array", input_image="image.jpg" ) # For numpy array output type
 
     for eachObject in detections:
         print(eachObject["name"] , " : ", eachObject["percentage_probability"], " : ", eachObject["box_points"] )
