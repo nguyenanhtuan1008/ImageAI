@@ -1,4 +1,5 @@
 # weights
+tools/keras-yolo3
 weights
 # Byte-compiled / optimized / DLL files
 __pycache__/

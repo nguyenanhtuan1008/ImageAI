@@ -4,8 +4,8 @@ def training():
     trainer = DetectionModelTrainer()
     trainer.setModelTypeAsYOLOv3()
     trainer.setDataDirectory(data_directory=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect")
-    trainer.setTrainConfig(object_names_array=["fray", "stain"], batch_size=4, num_experiments=5, 
-                            train_from_pretrained_model=r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\pretrained-yolov3.h5")
+    trainer.setTrainConfig(object_names_array=["fray", "stain"], batch_size=4, num_experiments=50, 
+                            train_from_pretrained_model=r"E:\acuity\tuan_experiment\yolo\ImageAI\weights\pretrained-yolov3.h5",)
     # In the above,when training for detecting multiple objects,
     #set object_names_array=["object1", "object2", "object3",..."objectz"]
     trainer.trainModel()
