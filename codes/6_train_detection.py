@@ -27,7 +27,7 @@ def evaluate_multi_model():
                                     json_path=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect\json\detection_config.json", 
                                     iou_threshold=0.5, object_threshold=0.3, nms_threshold=0.5)
 if __name__ == '__main__':
-
+    # https://github.com/nguyenanhtuan1008/ImageAI/blob/master/imageai/Detection/Custom/CUSTOMDETECTIONTRAINING.md
     # Step 1:
     # training()
     
