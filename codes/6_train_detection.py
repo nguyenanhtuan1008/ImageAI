@@ -15,26 +15,25 @@ def evaluate():
     trainer = DetectionModelTrainer()
     trainer.setModelTypeAsYOLOv3()
     trainer.setDataDirectory(data_directory=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect")
-    metrics = trainer.evaluateModel(model_path=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect\models\detection_model-ex-60--loss-2.76.h5", 
+    metrics = trainer.evaluateModel(model_path=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect\models_5epocks\detection_model-ex-005--loss-0003.791.h5", 
                                     json_path=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect\json\detection_config.json", 
                                     iou_threshold=0.5, object_threshold=0.3, nms_threshold=0.5)
 
 def evaluate_multi_model():
     trainer = DetectionModelTrainer()
     trainer.setModelTypeAsYOLOv3()
-    trainer.setDataDirectory(data_directory="hololens")
-    metrics = trainer.evaluateModel(model_path=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect\models", 
+    trainer.setDataDirectory(data_directory=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect")
+    metrics = trainer.evaluateModel(model_path=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect\models_5epocks",
                                     json_path=r"E:\acuity\acuity_projects\AR\datasets\_imageai_train\images_imageai_detect\json\detection_config.json", 
                                     iou_threshold=0.5, object_threshold=0.3, nms_threshold=0.5)
-
 if __name__ == '__main__':
 
     # Step 1:
-    training()
+    # training()
     
     # Step 2:
     # Evaluate
-    # evaluate()
+    evaluate()
 
     # Multi model evaluate
     # evaluate_multi_model()
